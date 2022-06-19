@@ -5,24 +5,10 @@ class Solution {
         Arrays.sort(nums);
         
         for(int i = 0; i < nums.length; i++){
-            if(target == nums[i]){
+            if(nums[i] == target){
                 ans.add(i);
             }
         }
-        
-//         int s = 0;
-//         int e = nums.length;
-        
-//         while(s <= e){
-//             int m = s + (e-s)/2;
-//             if(target > nums[m]){
-//                 s = m + 1;
-//             }else if(target < nums[m]){
-//                 e = m - 1;
-//             }else{
-//                 ans.add(m);
-//             }
-//         }
         return ans;
     }
 }
