@@ -1,27 +1,29 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        return new int[] {first(nums,target), second(nums, target)};
+        //optimal solution
+        int a = first(nums,target);
+        int b = second(nums,target);
         
+        return new int[] {a,b};
     }
     
     int first(int[] arr, int target){
         int s = 0;
-        int e = arr.length-1;
+        int e =arr.length-1;
         int r = -1;
         
         while(s <= e){
             int m = s + (e-s)/2;
-            if(arr[m] == target){
+            if(target > arr[m]){
+                s = m + 1;
+            }else if (target < arr[m]){
+                e = m - 1;
+            }else {
                 r = m;
                 e = m - 1;
-            }else if(arr[m] > target){
-                e = m - 1;
-            }else{
-                s = m + 1;
             }
         }
         return r;
-        
     }
     
     int second(int[] arr, int target){
@@ -31,15 +33,15 @@ class Solution {
         
         while(s <= e){
             int m = s + (e-s)/2;
-            if(arr[m] == target){
-                r = m;
+            if(target > arr[m]){
                 s = m + 1;
-            }else if(arr[m] > target){
+            }else if(target < arr[m]){
                 e = m - 1;
-            }else{
+            }else {
+                r = m;
                 s = m + 1;
             }
         }
         return r;
-    } 
+    }
 }
