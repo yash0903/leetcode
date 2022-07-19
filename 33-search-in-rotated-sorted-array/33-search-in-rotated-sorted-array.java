@@ -1,10 +1,12 @@
 class Solution {
     public int search(int[] nums, int target) {
         int pivot = 0;
+        
         for(int i = 1; i < nums.length; i++){
             if(nums[i]< nums[i-1]){
                 pivot = i-1;
             }
+            
         }
         
         int a = searchInRight(nums, pivot, target);
@@ -50,4 +52,5 @@ class Solution {
         }
         return -1;
     }
+    
 }
