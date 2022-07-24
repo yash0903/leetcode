@@ -1,20 +1,22 @@
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        int a = searchInLeft(nums,target);
-        int b = searchInRight(nums,target);
-        return new int[] {a,b};
+    public int[] searchRange(int[] arr, int target) {
+        int a1 = first(arr, target);
+        int a2 = second(arr, target);
+        
+        return new int[] {a1,a2};
     }
     
-    int searchInLeft(int[] nums, int target){
+    int first(int[] arr, int target){
         int s = 0;
-        int e = nums.length-1;
+        int e = arr.length-1;
         int r = -1;
+        
         while(s <= e){
             int m = s + (e-s)/2;
-            if(nums[m] == target){
+            if(target == arr[m]){
                 r = m;
-                e = m-1;
-            }else if(nums[m] > target){
+                e = m - 1;
+            }else if(target < arr[m]){
                 e = m -1;
             }else{
                 s = m + 1;
@@ -23,19 +25,20 @@ class Solution {
         return r;
     }
     
-    int searchInRight(int[] nums, int target){
-        int s  = 0;
-        int e = nums.length-1;
+    int second(int[] arr, int target){
+        int s = 0;
+        int e = arr.length-1;
         int r = -1;
         
         while(s <= e){
             int m = s + (e-s)/2;
-            if(nums[m] == target){
+            
+            if(target == arr[m]){
                 r = m;
-                s = m + 1;
-            }else if(nums[m] > target){
+                s = m + 1; 
+            }else if(target < arr[m]){
                 e = m - 1;
-            }else{
+            }else {
                 s = m + 1;
             }
         }
