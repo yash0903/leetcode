@@ -1,6 +1,6 @@
 class Solution {
     public int search(int[] nums, int target) {
-        int pivot = 0;
+        int pivot = searchPivot(nums);
         
         for(int i = 1; i < nums.length; i++){
             if(nums[i]< nums[i-1]){
@@ -53,4 +53,19 @@ class Solution {
         return -1;
     }
     
+    int searchPivot(int[] nums){
+       int s = 0;
+        int e = nums.length-1;
+
+        while(s < e){
+            int m = s + (e-s)/2;
+
+            if(nums[m] > nums[s]){
+                s = m;
+            }else{
+                e = m;
+            }
+        }
+        return s;
+    }
 }
